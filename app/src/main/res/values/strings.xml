@@ -19,6 +19,7 @@
 
     <string name="toast_enable_a11y_prompt">Please enable Quest Voice Board in Accessibility Settings</string>
     <string name="toast_run_deploy_prompt">Please run ./scripts/deploy.sh to enable service</string>
+    <string name="toast_audio_permission_required">Microphone permission is required for voice recognition</string>
     <string name="content_desc_start">Start</string>
     <string name="content_desc_stop">Stop</string>
 </resources>

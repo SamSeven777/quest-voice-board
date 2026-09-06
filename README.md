@@ -9,6 +9,7 @@
   <img src="https://img.shields.io/badge/ASR-SenseVoice%20Small%20(int8)-orange" alt="ASR Engine" />
   <img src="https://img.shields.io/badge/VAD-Silero%20VAD-green" alt="VAD Engine" />
   <img src="https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4?logo=android" alt="Compose" />
+  <img src="https://img.shields.io/badge/Crafted%20with-Gemini-8E75B2?logo=google&logoColor=white" alt="Gemini" />
   <img src="https://img.shields.io/badge/License-Apache%202.0-lightgrey" alt="License" />
 </p>
 
@@ -134,9 +135,9 @@ quest-voice-board/
 │       │   ├── silero_vad.onnx                # Silero VAD 神经网络
 │       │   └── lexicon.txt / *.fst            # FST 文本归一化词典
 │       ├── jniLibs/arm64-v8a/                 # sherpa-onnx 优化的 C++ JNI 动态库
-│       └── java/com/k2fsa/sherpa/onnx/
-│           ├── Vad.kt / OfflineRecognizer.kt  # JNI 核心调度封装
-│           └── simulate/streaming/asr/
+│       └── java/
+│           ├── com/k2fsa/sherpa/onnx/         # sherpa-onnx JNI 核心封装 (Vad / Recognizer)
+│           └── xyz/sam7/questvoiceboard/
 │               ├── MainActivity.kt            # Compose 界面入口与生命周期管理
 │               ├── VoiceInputController.kt    # 音频流采集 + VAD 切片 + ASR 解码调度
 │               ├── VoiceAccessibilityService.kt # 全局双击按键拦截 + 智能多窗口无障碍粘贴
@@ -159,6 +160,7 @@ quest-voice-board/
 - [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx)：新一代 Kaldi 离线与流式语音识别运行时
 - [SenseVoice](https://github.com/FunAudioLLM/SenseVoice)：阿里巴巴通义实验室开源的多语言语音大模型
 - [Silero VAD](https://github.com/snakers4/silero-vad)：工业级高精度端侧语音活动检测模型
+- [Google Gemini](https://deepmind.google/technologies/gemini/)：全流程 AI 结对编程伙伴，协同完成核心架构演进、Compose VR 交互定制、JNI 性能调优与工程化落地
 
 ---
 

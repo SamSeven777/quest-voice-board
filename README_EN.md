@@ -9,6 +9,7 @@
   <img src="https://img.shields.io/badge/ASR-SenseVoice%20Small%20(int8)-orange" alt="ASR Engine" />
   <img src="https://img.shields.io/badge/VAD-Silero%20VAD-green" alt="VAD Engine" />
   <img src="https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4?logo=android" alt="Compose" />
+  <img src="https://img.shields.io/badge/Crafted%20with-Gemini-8E75B2?logo=google&logoColor=white" alt="Gemini" />
   <img src="https://img.shields.io/badge/License-Apache%202.0-lightgrey" alt="License" />
 </p>
 
@@ -136,9 +137,9 @@ quest-voice-board/
 │       │   ├── silero_vad.onnx                # Silero VAD neural network
 │       │   └── lexicon.txt / *.fst            # FST text normalization lexicons
 │       ├── jniLibs/arm64-v8a/                 # Optimized sherpa-onnx C++ JNI libraries
-│       └── java/com/k2fsa/sherpa/onnx/
-│           ├── Vad.kt / OfflineRecognizer.kt  # JNI bindings
-│           └── simulate/streaming/asr/
+│       └── java/
+│           ├── com/k2fsa/sherpa/onnx/         # JNI bindings (Vad / Recognizer)
+│           └── xyz/sam7/questvoiceboard/
 │               ├── MainActivity.kt            # Compose UI entrypoint & lifecycle
 │               ├── VoiceInputController.kt    # Audio recording + VAD segmentation + ASR decoding
 │               ├── VoiceAccessibilityService.kt # Global double-tap hotkey + multi-window auto-paste
@@ -161,6 +162,7 @@ quest-voice-board/
 - [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx): Next-gen Kaldi speech recognition runtime
 - [SenseVoice](https://github.com/FunAudioLLM/SenseVoice): Alibaba Tongyi Lab's multilingual speech foundation model
 - [Silero VAD](https://github.com/snakers4/silero-vad): Industrial-grade, high-performance voice activity detector
+- [Google Gemini](https://deepmind.google/technologies/gemini/): AI pair programming partner for full-stack architecture evolution, Compose VR UI customization, JNI optimizations, and production engineering
 
 ---
 

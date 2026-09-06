@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     controller.initialize()
                 }
             } else {
-                Toast.makeText(this, "需要麦克风录音权限才能进行语音识别", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.toast_audio_permission_required), Toast.LENGTH_LONG).show()
             }
         }
 
