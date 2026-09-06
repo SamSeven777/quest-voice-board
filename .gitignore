@@ -1,0 +1,23 @@
+# Gradle & Build Artifacts
+*.log
+.gradle/
+build/
+app/build/
+dist/
+*.apk
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+.DS_Store
+
+# Legacy & Temp
+*.idsig
+.android/
+.kotlin/
+*.tmp
+
+# Large Neural Network Models (auto-downloaded during build)
+*.tar.bz2
+app/src/main/assets/**/model.int8.onnx

@@ -1,0 +1,62 @@
+name: Release Quest Voice Board APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Grant execute permission for scripts
+        run: chmod +x gradlew scripts/*.sh
+
+      - name: Cache SenseVoice ASR Model
+        uses: actions/cache@v4
+        with:
+          path: app/src/main/assets/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17/model.int8.onnx
+          key: asr-model-sensevoice-v1
+
+      - name: Download ASR Model if not cached
+        run: ./scripts/download-models.sh
+
+      - name: Build Release APK
+        run: ./gradlew assembleRelease assembleDebug --stacktrace
+
+      - name: Prepare Release Assets
+        run: |
+          mkdir -p release-assets
+          RELEASE_APK=$(find app/build/outputs/apk/release -name "*.apk" | head -n 1)
+          DEBUG_APK=$(find app/build/outputs/apk/debug -name "*.apk" | head -n 1)
+          if [ -n "$RELEASE_APK" ]; then
+            cp "$RELEASE_APK" "release-assets/quest-voice-board-${{ github.ref_name }}.apk"
+          fi
+          if [ -n "$DEBUG_APK" ]; then
+            cp "$DEBUG_APK" "release-assets/quest-voice-board-${{ github.ref_name }}-debug.apk"
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-assets/*.apk
+          generate_release_notes: true
+          draft: false
+          prerelease: false

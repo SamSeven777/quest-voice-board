@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quest Voice Board</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="clear">Clear</string>
+    <string name="copy">Copy</string>
+    <string name="accessibility_service_label">Quest Voice Board 自动粘贴服务</string>
+    <string name="accessibility_service_description">允许语音识别完成后自动将文字粘贴到目标应用的输入框，支持双击音量键快速开关。</string>
+</resources>
