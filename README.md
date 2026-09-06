@@ -1,6 +1,10 @@
 # Quest Voice Board 🎙️
 
 <p align="center">
+  <b>简体中文</b> | <a href="README_EN.md">English</a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Platform-Meta%20Quest%203%20%7C%20Horizon%20OS-blue?logo=meta" alt="Platform" />
   <img src="https://img.shields.io/badge/ASR-SenseVoice%20Small%20(int8)-orange" alt="ASR Engine" />
   <img src="https://img.shields.io/badge/VAD-Silero%20VAD-green" alt="VAD Engine" />

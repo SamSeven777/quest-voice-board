@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quest Voice Board</string>
+    <string name="accessibility_service_label">Quest Voice Board 自动粘贴服务</string>
+    <string name="accessibility_service_description">允许语音识别完成后自动将文字粘贴到目标应用的输入框，支持双击音量键快速开关。</string>
+
+    <string name="toast_listening">听写中</string>
+    <string name="toast_paused">已暂停</string>
+
+    <string name="status_a11y_inactive">无障碍未激活 (点击修复)</string>
+    <string name="status_loading_engine">正在加载 SenseVoice 引擎...</string>
+    <string name="status_init_failed">引擎初始化失败: %1$s</string>
+    <string name="status_listening">正在听写... 请对着麦克风说话</string>
+    <string name="status_ready">准备就绪 (可双击音量下键唤醒)</string>
+
+    <string name="btn_retry_init">点击重试初始化</string>
+    <string name="btn_start_dictation">开始听写</string>
+    <string name="btn_stop_recording">停止录音</string>
+
+    <string name="toast_enable_a11y_prompt">请在设置中开启 Quest Voice Board 无障碍服务</string>
+    <string name="toast_run_deploy_prompt">请运行 ./scripts/deploy.sh 开启服务</string>
+    <string name="content_desc_start">开始</string>
+    <string name="content_desc_stop">停止</string>
+</resources>

@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Quest Voice Board</string>
-    <string name="start">Start</string>
-    <string name="stop">Stop</string>
-    <string name="clear">Clear</string>
-    <string name="copy">Copy</string>
-    <string name="accessibility_service_label">Quest Voice Board 自动粘贴服务</string>
-    <string name="accessibility_service_description">允许语音识别完成后自动将文字粘贴到目标应用的输入框，支持双击音量键快速开关。</string>
+    <string name="accessibility_service_label">Quest Voice Board Auto-Paste Service</string>
+    <string name="accessibility_service_description">Automatically pastes transcribed speech into active input fields, toggled globally via double-tap volume down key.</string>
+
+    <string name="toast_listening">Listening...</string>
+    <string name="toast_paused">Paused</string>
+
+    <string name="status_a11y_inactive">Accessibility Inactive (Tap to Fix)</string>
+    <string name="status_loading_engine">Loading SenseVoice Engine...</string>
+    <string name="status_init_failed">Engine initialization failed: %1$s</string>
+    <string name="status_listening">Listening... Speak into microphone</string>
+    <string name="status_ready">Ready (Double-tap Volume Down to toggle)</string>
+
+    <string name="btn_retry_init">Retry Initialization</string>
+    <string name="btn_start_dictation">Start Dictation</string>
+    <string name="btn_stop_recording">Stop Recording</string>
+
+    <string name="toast_enable_a11y_prompt">Please enable Quest Voice Board in Accessibility Settings</string>
+    <string name="toast_run_deploy_prompt">Please run ./scripts/deploy.sh to enable service</string>
+    <string name="content_desc_start">Start</string>
+    <string name="content_desc_stop">Stop</string>
 </resources>

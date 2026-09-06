@@ -43,6 +43,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.k2fsa.sherpa.onnx.simulate.streaming.asr.R
 import com.k2fsa.sherpa.onnx.simulate.streaming.asr.VoiceAccessibilityService
 import com.k2fsa.sherpa.onnx.simulate.streaming.asr.VoiceInputController
 import kotlinx.coroutines.launch
@@ -92,16 +94,16 @@ fun HomeScreen(controller: VoiceInputController) {
                                         context.startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).apply {
                                             flags = Intent.FLAG_ACTIVITY_NEW_TASK
                                         })
-                                        Toast.makeText(context, "请在设置中开启 Quest Voice Board 无障碍服务", Toast.LENGTH_LONG).show()
+                                        Toast.makeText(context, context.getString(R.string.toast_enable_a11y_prompt), Toast.LENGTH_LONG).show()
                                     } catch (e: Exception) {
-                                        Toast.makeText(context, "请运行 ./scripts/deploy.sh 开启服务", Toast.LENGTH_LONG).show()
+                                        Toast.makeText(context, context.getString(R.string.toast_run_deploy_prompt), Toast.LENGTH_LONG).show()
                                     }
                                 }
                             }
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
                         Text(
-                            text = "无障碍未激活 (点击修复)",
+                            text = stringResource(R.string.status_a11y_inactive),
                             fontSize = 10.sp,
                             color = Color.White
                         )
@@ -131,10 +133,10 @@ fun HomeScreen(controller: VoiceInputController) {
                 ) {
                     if (latestText.isEmpty()) {
                         val statusText = when {
-                            initError != null -> "引擎初始化失败: $initError"
-                            !isInitialized -> "正在加载 SenseVoice 引擎..."
-                            isRecording -> "正在听写... 请对着麦克风说话"
-                            else -> "准备就绪 (可双击音量下键唤醒)"
+                            initError != null -> stringResource(R.string.status_init_failed, initError ?: "")
+                            !isInitialized -> stringResource(R.string.status_loading_engine)
+                            isRecording -> stringResource(R.string.status_listening)
+                            else -> stringResource(R.string.status_ready)
                         }
                         val statusColor = if (initError != null) Color(0xFFEF5350) else Color(0xFF7E8494)
                         Text(
@@ -173,7 +175,7 @@ fun HomeScreen(controller: VoiceInputController) {
                         shape = RoundedCornerShape(24.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFD32F2F))
                     ) {
-                        Text("点击重试初始化", fontSize = 13.sp)
+                        Text(stringResource(R.string.btn_retry_init), fontSize = 13.sp)
                     }
                 } else if (!isInitialized) {
                     CircularProgressIndicator(
@@ -195,12 +197,12 @@ fun HomeScreen(controller: VoiceInputController) {
                     ) {
                         Icon(
                             imageVector = if (isRecording) Icons.Default.MicOff else Icons.Default.Mic,
-                            contentDescription = if (isRecording) "停止" else "开始",
+                            contentDescription = stringResource(if (isRecording) R.string.content_desc_stop else R.string.content_desc_start),
                             modifier = Modifier.size(20.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = if (isRecording) "停止录音" else "开始听写",
+                            text = stringResource(if (isRecording) R.string.btn_stop_recording else R.string.btn_start_dictation),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold
                         )

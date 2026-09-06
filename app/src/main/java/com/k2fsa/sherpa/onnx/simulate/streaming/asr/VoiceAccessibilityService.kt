@@ -90,7 +90,7 @@ class VoiceAccessibilityService : AccessibilityService() {
             val ctx = instance ?: return
             android.os.Handler(android.os.Looper.getMainLooper()).post {
                 currentToast?.cancel()
-                val message = if (enabled) "听写中" else "已暂停"
+                val message = ctx.getString(if (enabled) R.string.toast_listening else R.string.toast_paused)
                 currentToast = Toast.makeText(ctx, message, Toast.LENGTH_SHORT).apply {
                     show()
                 }
