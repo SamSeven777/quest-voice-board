@@ -91,7 +91,7 @@ class VoiceAccessibilityService : AccessibilityService() {
             android.os.Handler(android.os.Looper.getMainLooper()).post {
                 currentToast?.cancel()
                 val raw = ctx.getString(if (enabled) R.string.toast_listening else R.string.toast_paused)
-                val message = "\u3000\u3000$raw\u3000\u3000"
+                val message = "\u3000$raw\u3000"
                 currentToast = Toast.makeText(ctx, message, Toast.LENGTH_SHORT).apply {
                     show()
                 }
