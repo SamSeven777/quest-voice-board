@@ -78,9 +78,9 @@ When browsing the web, chatting in Discord, taking notes in Obsidian, or typing 
    - Allow **Microphone permission**.
    - If the banner says `Accessibility Inactive (Tap to Fix)`, click it to enable the service in System Settings, or run this one-liner via ADB from your PC:
      ```bash
-     adb shell pm grant com.k2fsa.sherpa.onnx.simulate.streaming.asr android.permission.RECORD_AUDIO
-     adb shell pm grant com.k2fsa.sherpa.onnx.simulate.streaming.asr android.permission.WRITE_SECURE_SETTINGS
-     adb shell settings put secure enabled_accessibility_services com.k2fsa.sherpa.onnx.simulate.streaming.asr/com.k2fsa.sherpa.onnx.simulate.streaming.asr.VoiceAccessibilityService
+     adb shell pm grant xyz.sam7.questvoiceboard android.permission.RECORD_AUDIO
+     adb shell pm grant xyz.sam7.questvoiceboard android.permission.WRITE_SECURE_SETTINGS
+     adb shell settings put secure enabled_accessibility_services xyz.sam7.questvoiceboard/.VoiceAccessibilityService
      adb shell settings put secure accessibility_enabled 1
      ```
 

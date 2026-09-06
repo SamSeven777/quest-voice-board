@@ -76,9 +76,9 @@
    - 首次启动允许**录音权限**。
    - 顶部若显示 `无障碍未激活`，点击后按提示前往系统设置开启无障碍服务；或者通过电脑执行一次 ADB 授权命令：
      ```bash
-     adb shell pm grant com.k2fsa.sherpa.onnx.simulate.streaming.asr android.permission.RECORD_AUDIO
-     adb shell pm grant com.k2fsa.sherpa.onnx.simulate.streaming.asr android.permission.WRITE_SECURE_SETTINGS
-     adb shell settings put secure enabled_accessibility_services com.k2fsa.sherpa.onnx.simulate.streaming.asr/com.k2fsa.sherpa.onnx.simulate.streaming.asr.VoiceAccessibilityService
+     adb shell pm grant xyz.sam7.questvoiceboard android.permission.RECORD_AUDIO
+     adb shell pm grant xyz.sam7.questvoiceboard android.permission.WRITE_SECURE_SETTINGS
+     adb shell settings put secure enabled_accessibility_services xyz.sam7.questvoiceboard/.VoiceAccessibilityService
      adb shell settings put secure accessibility_enabled 1
      ```
 

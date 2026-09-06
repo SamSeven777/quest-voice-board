@@ -1,4 +1,4 @@
-package com.k2fsa.sherpa.onnx.simulate.streaming.asr
+package xyz.sam7.questvoiceboard
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -9,7 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import com.k2fsa.sherpa.onnx.simulate.streaming.asr.screens.HomeScreen
+import xyz.sam7.questvoiceboard.screens.HomeScreen
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {

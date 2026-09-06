@@ -1,4 +1,4 @@
-package com.k2fsa.sherpa.onnx.simulate.streaming.asr
+package xyz.sam7.questvoiceboard
 
 import android.accessibilityservice.AccessibilityService
 import android.content.Context
@@ -183,7 +183,8 @@ class VoiceAccessibilityService : AccessibilityService() {
                 node.actionList.any { it.id == AccessibilityNodeInfo.ACTION_PASTE || it.id == AccessibilityNodeInfo.ACTION_SET_TEXT }
             if (!isInputCandidate) return false
             val pkg = node.packageName?.toString() ?: return true
-            return pkg != "com.k2fsa.sherpa.onnx.simulate.streaming.asr"
+            val myPkg = instance?.packageName ?: "xyz.sam7.questvoiceboard"
+            return pkg != myPkg
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.k2fsa.sherpa.onnx.simulate.streaming.asr
+package xyz.sam7.questvoiceboard
 
 import android.annotation.SuppressLint
 import android.content.ClipData

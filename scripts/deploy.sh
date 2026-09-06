@@ -33,21 +33,26 @@ echo "使用安装包：$APK"
 echo "=== [3/3] 正在通过 Wi-Fi 连接 Quest 3 ($DEVICE) 并安装 ==="
 adb connect "$DEVICE" 2>/dev/null || true
 
+PKG="xyz.sam7.questvoiceboard"
+
 echo "正在推送安装..."
+# 清理旧包名残留（如存在）
+adb -s "$DEVICE" uninstall com.k2fsa.sherpa.onnx.simulate.streaming.asr 2>/dev/null || true
+
 if ! adb -s "$DEVICE" install --no-incremental -r "$APK"; then
-    echo "检测到签名不一致，正在卸载旧版本并重新安装..."
-    adb -s "$DEVICE" uninstall com.k2fsa.sherpa.onnx.simulate.streaming.asr 2>/dev/null || true
+    echo "检测到安装冲突，正在卸载旧版本并重新安装..."
+    adb -s "$DEVICE" uninstall "$PKG" 2>/dev/null || true
     adb -s "$DEVICE" install --no-incremental "$APK"
 fi
 
 echo "正在授予录音、通知与系统设置权限..."
-adb -s "$DEVICE" shell pm grant com.k2fsa.sherpa.onnx.simulate.streaming.asr android.permission.RECORD_AUDIO
-adb -s "$DEVICE" shell pm grant com.k2fsa.sherpa.onnx.simulate.streaming.asr android.permission.POST_NOTIFICATIONS 2>/dev/null || true
-adb -s "$DEVICE" shell pm grant com.k2fsa.sherpa.onnx.simulate.streaming.asr android.permission.WRITE_SECURE_SETTINGS 2>/dev/null || true
-adb -s "$DEVICE" shell appops set com.k2fsa.sherpa.onnx.simulate.streaming.asr RECORD_AUDIO allow
+adb -s "$DEVICE" shell pm grant "$PKG" android.permission.RECORD_AUDIO
+adb -s "$DEVICE" shell pm grant "$PKG" android.permission.POST_NOTIFICATIONS 2>/dev/null || true
+adb -s "$DEVICE" shell pm grant "$PKG" android.permission.WRITE_SECURE_SETTINGS 2>/dev/null || true
+adb -s "$DEVICE" shell appops set "$PKG" RECORD_AUDIO allow
 
 echo "正在配置并启用无障碍自动粘贴服务..."
-SERVICE="com.k2fsa.sherpa.onnx.simulate.streaming.asr/com.k2fsa.sherpa.onnx.simulate.streaming.asr.VoiceAccessibilityService"
+SERVICE="${PKG}/.VoiceAccessibilityService"
 EXISTING=$(adb -s "$DEVICE" shell settings get secure enabled_accessibility_services 2>/dev/null | tr -d '\r\n')
 if [ "$EXISTING" = "null" ] || [ -z "$EXISTING" ]; then
     adb -s "$DEVICE" shell settings put secure enabled_accessibility_services "$SERVICE"
@@ -57,6 +62,6 @@ fi
 adb -s "$DEVICE" shell settings put secure accessibility_enabled 1
 
 echo "正在启动应用..."
-adb -s "$DEVICE" shell monkey -p com.k2fsa.sherpa.onnx.simulate.streaming.asr -c android.intent.category.LAUNCHER 1
+adb -s "$DEVICE" shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1
 
 echo "=== 部署完成！请戴上头显体验 ==="

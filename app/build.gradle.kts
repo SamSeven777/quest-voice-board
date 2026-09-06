@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.k2fsa.sherpa.onnx.simulate.streaming.asr"
+    namespace = "xyz.sam7.questvoiceboard"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.k2fsa.sherpa.onnx.simulate.streaming.asr"
+        applicationId = "xyz.sam7.questvoiceboard"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.k2fsa.sherpa.onnx.simulate.streaming.asr.screens
+package xyz.sam7.questvoiceboard.screens
 
 import android.content.Context
 import android.content.Intent
@@ -44,9 +44,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.res.stringResource
-import com.k2fsa.sherpa.onnx.simulate.streaming.asr.R
-import com.k2fsa.sherpa.onnx.simulate.streaming.asr.VoiceAccessibilityService
-import com.k2fsa.sherpa.onnx.simulate.streaming.asr.VoiceInputController
+import xyz.sam7.questvoiceboard.R
+import xyz.sam7.questvoiceboard.VoiceAccessibilityService
+import xyz.sam7.questvoiceboard.VoiceInputController
 import kotlinx.coroutines.launch
 
 @Composable
@@ -92,7 +92,7 @@ fun HomeScreen(controller: VoiceInputController) {
                                 if (!enabled) {
                                     try {
                                         context.startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).apply {
-                                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                                             flags = Intent.FLAG_ACTIVITY_NEW_TASK
                                         })
                                         Toast.makeText(context, context.getString(R.string.toast_enable_a11y_prompt), Toast.LENGTH_LONG).show()
                                     } catch (e: Exception) {
