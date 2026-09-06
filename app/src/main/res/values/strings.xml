@@ -4,7 +4,7 @@
     <string name="accessibility_service_label">Quest Voice Board Auto-Paste Service</string>
     <string name="accessibility_service_description">Automatically pastes transcribed speech into active input fields, toggled globally via double-tap volume down key.</string>
 
-    <string name="toast_listening">Listening...</string>
+    <string name="toast_listening">Listening</string>
     <string name="toast_paused">Paused</string>
 
     <string name="status_a11y_inactive">Accessibility Inactive (Tap to Fix)</string>
