@@ -39,18 +39,14 @@ jobs:
         run: ./scripts/download-models.sh
 
       - name: Build Release APK
-        run: ./gradlew assembleRelease assembleDebug --stacktrace
+        run: ./gradlew assembleRelease --stacktrace
 
       - name: Prepare Release Assets
         run: |
           mkdir -p release-assets
           RELEASE_APK=$(find app/build/outputs/apk/release -name "*.apk" | head -n 1)
-          DEBUG_APK=$(find app/build/outputs/apk/debug -name "*.apk" | head -n 1)
           if [ -n "$RELEASE_APK" ]; then
             cp "$RELEASE_APK" "release-assets/quest-voice-board-${{ github.ref_name }}.apk"
-          fi
-          if [ -n "$DEBUG_APK" ]; then
-            cp "$DEBUG_APK" "release-assets/quest-voice-board-${{ github.ref_name }}-debug.apk"
           fi
 
       - name: Create GitHub Release
