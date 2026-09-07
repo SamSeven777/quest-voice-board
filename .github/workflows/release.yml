@@ -48,7 +48,6 @@ jobs:
           DEBUG_APK=$(find app/build/outputs/apk/debug -name "*.apk" | head -n 1)
           if [ -n "$RELEASE_APK" ]; then
             cp "$RELEASE_APK" "release-assets/quest-voice-board-${{ github.ref_name }}.apk"
-            cp "$RELEASE_APK" "release-assets/quest-voice-board-release.apk"
           fi
           if [ -n "$DEBUG_APK" ]; then
             cp "$DEBUG_APK" "release-assets/quest-voice-board-${{ github.ref_name }}-debug.apk"
